@@ -122,17 +122,20 @@ public class LegZoom2 : MonoBehaviour {
 			simpract.active = false;
 			simpract.enabled = false;
 			simtext.enabled = false;
-			control = 2;
+			control = 3;
 			menu.active = true;
 			menu.enabled = true;
 			steps.enabled = true;
 			steps.active = true;
 			leganim.GetComponent<SwipeTest>().enabled = true;
+			leganim.GetComponent<AnimationTest>().swipeNumber = -1;
 			control = 0;
 			leganim.GetComponent<MenuButton>().step = 0;
 			steps.guiTexture.texture = leganim.GetComponent<AnimationTest>().pracstep[leganim.GetComponent<MenuButton>().step];
 		}
-		
+		else{
+			control = -1;
+		}
 		
 		if (steps.enabled == true){
 			control = 1;

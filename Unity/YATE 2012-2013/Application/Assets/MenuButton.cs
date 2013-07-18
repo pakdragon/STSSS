@@ -28,7 +28,7 @@ public class MenuButton : MonoBehaviour {
 	void Start () {
 		
 		step = -1;
-		leganim.GetComponent<LegZoom2>().control = controller;
+		
 	
 	}
 	
@@ -36,24 +36,7 @@ public class MenuButton : MonoBehaviour {
 	void Update () {
 		
 		
-		/*if (medcamera.GetComponent<LegZoom2>().menu.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0)){
-			
-			medcamera.GetComponent<LegZoom2>().control = -1;
-			legcamera.SetActive(false);
-			medcamera.SetActive(true);
-			medcamera.GetComponent<LegZoom2>().simtest.enabled = true;
-			medcamera.GetComponent<LegZoom2>().simpract.enabled = true;
-			medcamera.GetComponent<LegZoom2>().simtext.enabled = false;
-			medcamera.GetComponent<LegZoom2>().menu.enabled = false;
-			medcamera.GetComponent<LegZoom2>().steps.enabled = false;
-			medcamera.GetComponent<LegZoom2>().currIndex = 0;
-			medcamera.GetComponent<LegZoom2>().step = 0;
-			legcamera.GetComponent<LegZoom2>().step = 0;
-			//steps.guiTexture.texture = medcamera.GetComponent<AnimationTest>().pracstep[medcamera.GetComponent<LegZoom2>().step];
-			medcamera.GetComponent<LegZoom2>().simtext.text = medcamera.GetComponent<LegZoom2>().myStrings[medcamera.GetComponent<LegZoom2>().currIndex];
-		
-			
-		}*/
+	
 		
 		
 		
@@ -75,30 +58,72 @@ public class MenuButton : MonoBehaviour {
 			leganim.GetComponent<SwipeTest>().enabled = false;
 			leganim.GetComponent<AnimationTest2>().currIndex = 0;
 			step = 0;
-			leganim.GetComponent<AnimationTest>().swipeNumber = 0;
-			leganim.GetComponent<AnimationTest2>().swipenumber = -1;
-			simtext.text = leganim.GetComponent<AnimationTest2>().myStrings[leganim.GetComponent<AnimationTest2>().currIndex];
+			//leganim.GetComponent<AnimationTest>().swipeNumber = -1;
+			//leganim.GetComponent<AnimationTest2>().swipenumber = -1;
+			//simtext.text = leganim.GetComponent<AnimationTest2>().myStrings[leganim.GetComponent<AnimationTest2>().currIndex];
 			steps.guiTexture.texture = leganim.GetComponent<AnimationTest>().pracstep[step];
-			//leganim.GetComponent<MegaPointCache>().time = 11;
-			controller = -1;
-			//leganim.GetComponent<AnimationTest>().swipeNumber = 0;
+			//leganim.GetComponent<LegZoom2>().control = -1;
 			leganim.GetComponent<MegaModifyObject>().enabled = true;
 			leganim.GetComponent<MegaPointCache>().time = 0 ;
 			leganim.GetComponent<MegaModifyObject>().enabled = false;
 			resetAnim();
+			Number();
 		}
 		
-		
+	
 		/*if (leganim.GetComponent<MegaPointCache>().time == 62){
 			
 			leganim.GetComponent<MegaPointCache>().time = 0;
 			leganim.GetComponent<MegaModifyObject>().enabled = false;
 		}*/
-	}
 	
-	public void resetAnim(){
+	
+		
+		if (leganim.GetComponent<MegaPointCache>().time > 10.1f){
+	
+			
+			leganim.GetComponent<MegaModifyObject>().enabled = false;
+			leganim.GetComponent<MegaPointCache>().time = 0f;
+			marker.GetComponent<MegaPointCache>().time = 0f;
+			
+			Number();
+		}
+		
+		if (muscle.GetComponent<MegaPointCache>().time > 11f){
+	
+			
+			muscle.GetComponent<MegaModifyObject>().enabled = false;
+			muscle.GetComponent<MegaPointCache>().time = 0f;
+			Number();
+		}
+		
+		if (marker.GetComponent<MegaPointCache>().time > 10.1f){
+	
+			
+			marker.GetComponent<MegaModifyObject>().enabled = false;
+			marker.GetComponent<MegaPointCache>().time = 0f;
+			Number ();
+		}
+		
+		if (fascia.GetComponent<MegaPointCache>().time > 11f){
+	
+			
+			fascia.GetComponent<MegaModifyObject>().enabled = false;
+			fascia.GetComponent<MegaPointCache>().time = 0f;
+			Number();
+		}
+	
+	}
+		 void resetAnim(){
+		
+		//muscle.GetComponent<MegaPointCache>().SetAnim(10.1f);
+		//leganim.GetComponent<MegaPointCache>().SetAnim(10.1f);
+		//fascia.GetComponent<MegaPointCache>().SetAnim(10.1f);
+		//muscle.GetComponent<MegaPointCache>().SetAnim(10.1f);
+		//print ("HELLLOEOIEOEOEOEO");
 		
 		
+	//if (menu.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0) &&  (leganim.GetComponent<LegZoom2>().control == 0 ||  leganim.GetComponent<LegZoom2>().control == 1)){	
 		leganim.GetComponent<MegaPointCache>().time = 9.9f;
 		marker.GetComponent<MegaPointCache>().time = 9.9f;
 		muscle.GetComponent<MegaPointCache>().time = 9.9f;
@@ -107,18 +132,11 @@ public class MenuButton : MonoBehaviour {
 		marker.GetComponent<MegaModifyObject>().enabled = true;
 		muscle.GetComponent<MegaModifyObject>().enabled = true;
 		fascia.GetComponent<MegaModifyObject>().enabled = true;
-		
-		if (leganim.GetComponent<MegaPointCache>().time > 10f && marker.GetComponent<MegaPointCache>().time > 10f && muscle.GetComponent<MegaPointCache>().time > 10f && fascia.GetComponent<MegaPointCache>().time > 10f){
-	
-			fascia.GetComponent<MegaModifyObject>().enabled = false;
-			leganim.GetComponent<MegaModifyObject>().enabled = false;
-			marker.GetComponent<MegaModifyObject>().enabled = false;
-			muscle.GetComponent<MegaModifyObject>().enabled = false;
-			
-			muscle.GetComponent<MegaPointCache>().time = 0f;
-			fascia.GetComponent<MegaPointCache>().time = 0f;
-			leganim.GetComponent<MegaPointCache>().time = 0f;
-			marker.GetComponent<MegaPointCache>().time = 0f;
-		}
 	}
+	
+	public void Number(){
+		leganim.GetComponent<AnimationTest>().swipeNumber = -1;
+	}
+	
+		
 }

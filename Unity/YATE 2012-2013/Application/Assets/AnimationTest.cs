@@ -29,7 +29,7 @@ public class AnimationTest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		swipeNumber = 0;
+		swipeNumber = -1;
 		//Gumbo = leganim.GetComponent<LegZoom2>().step;
 		legcamera.transform.position = new Vector3(4.54f, 9.434f, -3.932f);
 		marker.GetComponent<MegaModifyObject>().enabled = false;
@@ -77,18 +77,18 @@ public class AnimationTest : MonoBehaviour {
 		}
 		
 		
-		if (boolean == true && swipeNumber == 0){
+		if (boolean == true && swipeNumber <= 1){
 			marker.GetComponent<MegaModifyObject>().enabled = true;
-			
+			swipeNumber = 1;
 		
 		}
 			
-			if (marker.GetComponent<MegaPointCache>().time > 4f && swipeNumber == 0) {	
+			if (marker.GetComponent<MegaPointCache>().time > 4f && swipeNumber <= 1) {	
 				control ();
 				marker.GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
 				//leganim.GetComponent<MegaPointCache>().time = 2.1f;
-				swipeNumber ++;
+				swipeNumber++;
 				
 				guiChange();
 			
@@ -96,7 +96,7 @@ public class AnimationTest : MonoBehaviour {
 			
 		
 		
-		if (boolean == true && swipeNumber == 1){
+		if (boolean == true && swipeNumber == 2){
 			leganim.GetComponent<MegaModifyObject>().enabled = true;
 			leganim.GetComponent<MegaPointCache>().time = 4f;
 			marker.GetComponent<MegaModifyObject>().enabled = true;
@@ -104,7 +104,7 @@ public class AnimationTest : MonoBehaviour {
 		}
 			
 		
-		if (marker.GetComponent<MegaPointCache>().time > 9f  && swipeNumber == 2 ) {
+		if (marker.GetComponent<MegaPointCache>().time > 6f  && swipeNumber == 3 ) {
 			control ();	
 			marker.GetComponent<MegaModifyObject>().enabled = false;
 			
@@ -113,7 +113,7 @@ public class AnimationTest : MonoBehaviour {
 			
 			
 			
-			if (leganim.GetComponent<MegaPointCache>().time > 9f  && swipeNumber == 2) {	
+			if (leganim.GetComponent<MegaPointCache>().time > 7f  && swipeNumber == 3) {	
 			control ();	
 			leganim.GetComponent<MegaModifyObject>().enabled = false;
 				
@@ -123,7 +123,7 @@ public class AnimationTest : MonoBehaviour {
 			
 			}
 		
-	if (boolean == true && swipeNumber == 3){
+	if (boolean == true && swipeNumber == 4){
 			fascia.GetComponent<MegaModifyObject>().enabled = true;
 			fascia.GetComponent<MegaPointCache>().time = 5f;
 			swipeNumber ++;
@@ -131,7 +131,7 @@ public class AnimationTest : MonoBehaviour {
 		}
 	
 			
-			if (fascia.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 4) {	
+			if (fascia.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 5) {	
 			control ();	
 			fascia.GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
@@ -141,7 +141,7 @@ public class AnimationTest : MonoBehaviour {
 			
 			}
 		
-		if (boolean == true && swipeNumber == 5){
+		if (boolean == true && swipeNumber == 6){
 			muscle.GetComponent<MegaModifyObject>().enabled = true;
 			muscle.GetComponent<MegaPointCache>().time = 5f;
 			
@@ -149,7 +149,7 @@ public class AnimationTest : MonoBehaviour {
 		
 		}
 		
-				if (muscle.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 6) {	
+				if (muscle.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 7) {	
 			control ();	
 			muscle.GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;

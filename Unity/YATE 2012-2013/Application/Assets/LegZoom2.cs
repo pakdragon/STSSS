@@ -21,6 +21,7 @@ public class LegZoom2 : MonoBehaviour {
 	public int currIndex;
 	public GUITexture steps;
 	public GameObject leganim;
+	public GameObject empty;
 	//public Texture2D[] pracstep = new Texture2D[25];
 	//public int step= 0;
 	public int control;
@@ -47,10 +48,10 @@ public class LegZoom2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		Vector3 StartPos = new Vector3(8.912951f, 9.702024f, -3.959019f);
-		Vector3 EndPos = new Vector3(7.820833f, 9.040567f, -3.810575f);
+		Vector3 StartPos = new Vector3(8.63688f, 9.457705f, -3.06230f);
+		Vector3 EndPos = new Vector3(7.80175f, 8.970406f, -2.89487f);
 		//Vector3 EndPos = new Vector3 (6.1f, 9.1f, -4.017f);
-		medcamera.transform.position = new Vector3(8.917773f, 9.703301f, -4.485284f);
+		medcamera.transform.position = new Vector3(8.63688f, 9.457705f, -3.06230f);
 		
 		
 
@@ -72,6 +73,7 @@ public class LegZoom2 : MonoBehaviour {
 		joystickMove.SetActive ( false);
 		joystickRotate.SetActive ( false);
 		player.SetActive (false);
+		
 		}
 		
 	else { 
@@ -98,6 +100,7 @@ public class LegZoom2 : MonoBehaviour {
 			
 		if (simtest.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0)){
 			
+			empty.SetActive (false);
 			simtext.enabled = true;
 			simtext.active = true;
 			simtest.enabled = false;
@@ -111,10 +114,15 @@ public class LegZoom2 : MonoBehaviour {
 		
 		}
 		
-		if(simpract.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0)){
+		if(simpract.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0)&& control <= 1){
+			empty.SetActive(false);
+			empty.active = false;
 			simtest.enabled = false;
+			simtest.active = false;
+			simpract.active = false;
 			simpract.enabled = false;
 			simtext.enabled = false;
+			control = 2;
 			menu.active = true;
 			menu.enabled = true;
 			steps.enabled = true;
@@ -214,7 +222,7 @@ public class LegZoom2 : MonoBehaviour {
 		simtest.pixelInset = new Rect((350f/512f)*Screen.width, (150f/512f)*Screen.width, (30f/100f)*Screen.width, (20f/100f)*Screen.height);
 		simpract.pixelInset = new Rect((10f/512f)*Screen.width, (150f/512f)*Screen.width, (30f/100f)*Screen.width, (20f/100f)*Screen.height);
 		menu.pixelInset = new Rect((15f/512f)*Screen.width, (15f/512f)*Screen.width, (30f/100f)*Screen.width, (20f/100f)*Screen.height);
-		steps.pixelInset = new Rect ((150f/512f)*Screen.width, (120f/512f)*Screen.width, (50f/100f)*Screen.width, (40f/100f)*Screen.height);
+		steps.pixelInset = new Rect ((150f/512f)*Screen.width, (150f/512f)*Screen.width, (50f/100f)*Screen.width, (40f/100f)*Screen.height);
 		//simtext.pixelInset = new Rect((20f/512f)*Screen.width, (30f/512f)*Screen.width, (12.5f/100f)*Screen.width, (12.5f/100f)*Screen.height);
 		
 		

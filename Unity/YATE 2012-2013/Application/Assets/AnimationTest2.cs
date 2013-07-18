@@ -25,8 +25,8 @@ public class AnimationTest2 : MonoBehaviour {
 	
 			myStrings= new string[]{"Medial Incision", "Mark Incision", "Expose and free Muscles","Lateral Incision", "Mark Incision", "Incise skin & \nSubcutaneous Tissue", "Perform 'H-cut'; \nwatch for peroneal nerve", "Fasciotomy Complete"};
 	
-	if (leganim.GetComponent<AnimationTest>().boolean == true){
-			GetComponent<MegaModifyObject>().enabled = true;
+	if (leganim.GetComponent<AnimationTest>().boolean == true && (leganim.GetComponent<LegZoom2>().control == 0 || leganim.GetComponent<AnimationTest>().swipeNumber == 1) ){
+			leganim.GetComponent<MegaModifyObject>().enabled = true;
 		
 		}
 	
@@ -35,7 +35,7 @@ public class AnimationTest2 : MonoBehaviour {
 	
 	}
 		
-			if (leganim.GetComponent<MegaPointCache>().time > 5 && swipenumber < 1) {	
+			if (leganim.GetComponent<MegaPointCache>().time > 5 && swipenumber < 1 && leganim.GetComponent<LegZoom2>().control == 0) {	
 				GetComponent<MegaModifyObject>().enabled = false;
 				swipenumber ++;
 				leganim.GetComponent<AnimationTest>().boolean = false;

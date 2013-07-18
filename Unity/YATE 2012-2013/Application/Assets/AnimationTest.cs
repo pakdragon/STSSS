@@ -4,6 +4,9 @@ using System.Collections;
 public class AnimationTest : MonoBehaviour {
 	
 	public GameObject leganim;
+	public GameObject marker;
+	public GameObject fascia;
+	public GameObject muscle;
 	public GameObject medcamera;
 	public bool boolean = false;
 	public Texture2D[] pracstep = new Texture2D[25];
@@ -29,7 +32,9 @@ public class AnimationTest : MonoBehaviour {
 		swipeNumber = 0;
 		//Gumbo = leganim.GetComponent<LegZoom2>().step;
 		legcamera.transform.position = new Vector3(4.54f, 9.434f, -3.932f);
-		
+		marker.GetComponent<MegaModifyObject>().enabled = false;
+		muscle.GetComponent<MegaModifyObject>().enabled = false;
+		fascia.GetComponent<MegaModifyObject>().enabled = false;
 	
 		/*theCache = leganim.GetComponent<MegaPointCache>();
 		theObject = GetComponent<MegaModifyObject>();
@@ -72,42 +77,63 @@ public class AnimationTest : MonoBehaviour {
 		}
 		
 		
-		if (boolean == true){
-			GetComponent<MegaModifyObject>().enabled = true;
+		if (boolean == true && swipeNumber == 0){
+			marker.GetComponent<MegaModifyObject>().enabled = true;
+			
 		
 		}
 			
-			if (leganim.GetComponent<MegaPointCache>().time > 5 && swipeNumber < 1) {	
+			if (marker.GetComponent<MegaPointCache>().time > 4f && swipeNumber == 0) {	
 				control ();
-				GetComponent<MegaModifyObject>().enabled = false;
+				marker.GetComponent<MegaModifyObject>().enabled = false;
+				boolean = false;
 				//leganim.GetComponent<MegaPointCache>().time = 2.1f;
 				swipeNumber ++;
-				boolean = false;
+				
 				guiChange();
 			
 			}
 			
 		
 		
-		
+		if (boolean == true && swipeNumber == 1){
+			leganim.GetComponent<MegaModifyObject>().enabled = true;
+			leganim.GetComponent<MegaPointCache>().time = 4f;
+			marker.GetComponent<MegaModifyObject>().enabled = true;
+			swipeNumber++;
+		}
 			
-			if (leganim.GetComponent<MegaPointCache>().time >= 10  && swipeNumber < 2) {	
+		
+		if (marker.GetComponent<MegaPointCache>().time > 9f  && swipeNumber == 2 ) {
 			control ();	
-			GetComponent<MegaModifyObject>().enabled = false;
-				//leganim.GetComponent<MegaPointCache>().time = 5.1f;
-				//leganim.GetComponent<MegaPointCache>().time = 11f;
+			marker.GetComponent<MegaModifyObject>().enabled = false;
+			
+			
+		}
+			
+			
+			
+			if (leganim.GetComponent<MegaPointCache>().time > 9f  && swipeNumber == 2) {	
+			control ();	
+			leganim.GetComponent<MegaModifyObject>().enabled = false;
+				
 				boolean = false;
 				swipeNumber ++;
 				guiChange();
 			
 			}
 		
-	
+	if (boolean == true && swipeNumber == 3){
+			fascia.GetComponent<MegaModifyObject>().enabled = true;
+			fascia.GetComponent<MegaPointCache>().time = 5f;
+			swipeNumber ++;
+		
+		}
 	
 			
-			if (leganim.GetComponent<MegaPointCache>().time >= 15  && swipeNumber < 3) {	
+			if (fascia.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 4) {	
 			control ();	
-			GetComponent<MegaModifyObject>().enabled = false;
+			fascia.GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
 				swipeNumber++;
 				//leganim.GetComponent<MegaPointCache>().time = 11f;
@@ -115,16 +141,24 @@ public class AnimationTest : MonoBehaviour {
 			
 			}
 		
-				if (leganim.GetComponent<MegaPointCache>().time >= 20  && swipeNumber < 4) {	
+		if (boolean == true && swipeNumber == 5){
+			muscle.GetComponent<MegaModifyObject>().enabled = true;
+			muscle.GetComponent<MegaPointCache>().time = 5f;
+			
+			swipeNumber++;
+		
+		}
+		
+				if (muscle.GetComponent<MegaPointCache>().time > 9  && swipeNumber == 6) {	
 			control ();	
-			GetComponent<MegaModifyObject>().enabled = false;
+			muscle.GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
 				swipeNumber++;
 				//leganim.GetComponent<MegaPointCache>().time = 11f;
 				guiChange();
 			}
 		
-			if (leganim.GetComponent<MegaPointCache>().time >= 25  && swipeNumber < 5) {	
+		/*	if (leganim.GetComponent<MegaPointCache>().time >= 25  && swipeNumber < 5) {	
 				GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
 				swipeNumber++;
@@ -180,8 +214,8 @@ public class AnimationTest : MonoBehaviour {
 				boolean = false;
 				swipeNumber++;
 				//leganim.GetComponent<MegaPointCache>().time = 11f;
-				guiChange();
-			}
+				guiChange();*/
+			
 		if (steps.HitTest(Input.mousePosition) && Input.GetMouseButtonDown(0) && leganim.GetComponent<MenuButton>().step == 12){
 			medcamera.camera.enabled = false;
 			medcamera.SetActive (false);
@@ -195,7 +229,7 @@ public class AnimationTest : MonoBehaviour {
 			guiChange();
 		}
 		
-		if (leganim.GetComponent<MegaPointCache>().time >= 65  && swipeNumber < 13) {	
+	/*	if (leganim.GetComponent<MegaPointCache>().time >= 65  && swipeNumber < 13) {	
 				GetComponent<MegaModifyObject>().enabled = false;
 				boolean = false;
 				swipeNumber++;
@@ -286,7 +320,7 @@ public class AnimationTest : MonoBehaviour {
 				swipeNumber++;
 				//leganim.GetComponent<MegaPointCache>().time = 11f;
 				guiChange();
-		}
+		}*/
 		
 	}
 	public void booleanChange(){

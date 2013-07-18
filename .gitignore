@@ -14,3 +14,7 @@
 #Individual files that are rediculously big in size- 80 MB or larger.
 LegAnimationAlltheway.mb
 sharedassets0.assets
+
+#Removing the library path and Temp
+**/Library/
+**/Temp/

@@ -6,6 +6,8 @@
 *.csproj
 *.unityproj
 *.sln
+*.userprefs
+
 
 # Large file types which should NOT be uploaded through GitHub
 *.a
@@ -15,6 +17,8 @@
 LegAnimationAlltheway.mb
 sharedassets0.assets
 
-#Removing the library path and Temp
+#Removing the library path and Temp path
+Library/
+Temp/
 **/Library/
 **/Temp/

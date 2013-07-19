@@ -69,7 +69,7 @@ public class AnimationTest : MonoBehaviour {
 		Vector3 Sciss = new Vector3(7.01448f, 8.84510f, -2.7018f);
 		Vector3 EndSciss = new Vector3(7.01811f, 8.83518f, -2.5317f);
 		
-		Vector3 NewEnd = new Vector3(7.014016f, 8.89521f, -3.06123f);
+		Vector3 NewEnd = new Vector3(7.018448f, 8.85037f, -2.922752f);
 		
 		Quaternion First = new Quaternion(346.3763f, 139.1233f, 170.0109f,0f);
 		Quaternion Last = new Quaternion(6.6962f, 39.50874f, 195.482f,360f);

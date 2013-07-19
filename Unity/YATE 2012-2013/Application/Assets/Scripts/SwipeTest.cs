@@ -8,9 +8,13 @@ public class SwipeTest : MonoBehaviour {
         Vector2 touchStartPos;
         public float minSwipeDistance = .1f;
         //public static event System.Action<Swipe> OnSwipeDetected;
-		float[,] correctVal = new float[,] { {90, .5f, .5f, .5f}, 
-											{45, .5f, .5f, .5f} };
-		int maxTests = 2;
+											//Angle, PercentageX, PercentageY, Percetage dist
+		public float[,] correctVal = new float[,] { {110, .6f, .35f, .45f}, 
+											{110, .6f, .35f, .45f}, 
+											{110, .6f, .35f, .45f}, 
+											{110, .6f, .35f, .45f}, 
+											{110, .6f, .35f, .45f},  };  
+		int maxTests = 5;
 		private int testNumber;
 		public AnimationTest animTest;
 	
@@ -98,7 +102,7 @@ public class SwipeTest : MonoBehaviour {
 					{
 						correct = true;
 					}
-					angle += 180;
+					angle -= 180;
 					if( (angle < correctAngle +10) && (angle > correctAngle - 10) )
 					{
 						correct = true;
@@ -112,12 +116,14 @@ public class SwipeTest : MonoBehaviour {
 		        Vector2 lastPos = touch.position;
 				bool correct = false;
 				Vector2 midpoint = new Vector2((touchStartPos.x + lastPos.x)/2,(touchStartPos.y + lastPos.y)/2);
+				Vector2 relativeMidpoint = new Vector2((touchStartPos.x + lastPos.x)/(2*Screen.width),(touchStartPos.y + lastPos.y)/(2*Screen.height));
 				Vector2 correctMidpoint = new Vector2(correctVal[testNum,1] * Screen.width,correctVal[testNum,2] * Screen.height);
 				print ("midPoint is " + midpoint);
+				print ("correctedMidPoint is " + relativeMidpoint);
 				float spaceX = (float) Screen.width * .1f;
 				float spaceY = (float) Screen.height * .1f;
-				if( ( ( midpoint.x < (correctMidpoint.x + spaceX) ) && ( midpoint.x > (correctMidpoint.x - spaceX) )  ) &&  
-					( ( midpoint.y < (correctMidpoint.y + spaceY) ) && ( midpoint.y > (correctMidpoint.y - spaceY) )  ) )
+				if( ( ( midpoint.x <= (correctMidpoint.x + spaceX) ) && ( midpoint.x >= (correctMidpoint.x - spaceX) )  ) &&  
+					( ( midpoint.y <= (correctMidpoint.y + spaceY) ) && ( midpoint.y >= (correctMidpoint.y - spaceY) )  ) )
 				{
 					correct = true;
 				}
@@ -153,13 +159,11 @@ public class SwipeTest : MonoBehaviour {
 			}
 		
 			void callNewAnimation(){
-				//animTest.booleanChange();
-				testNumber++;
+				animTest.booleanChange();
+				//testNumber++;
 			}
 	
 			public void resetTest(){
 				testNumber = 0;
 			}
-				
-	
 }

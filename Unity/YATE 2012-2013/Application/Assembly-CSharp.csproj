@@ -186,10 +186,10 @@
      <Compile Include="Assets\Mega-Fiers\Scripts\MegaGrab\JPGEncoder.cs" />
      <Compile Include="Assets\Mega-Fiers\Scripts\MegaGrab\MegaGrab.cs" />
      <Compile Include="Assets\MenuButton.cs" />
-     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Phase1Text.cs" />
      <Compile Include="Assets\Phase2Text.cs" />
      <Compile Include="Assets\PlatformGui.cs" />
+     <Compile Include="Assets\Scalpel.cs" />
      <Compile Include="Assets\Scripts\About.cs" />
      <Compile Include="Assets\Scripts\CameraPan.cs" />
      <Compile Include="Assets\Scripts\Checkmarks.cs" />

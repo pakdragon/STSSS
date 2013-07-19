@@ -5,6 +5,7 @@ public class MenuButton : MonoBehaviour {
 	
 	
 	public GameObject legcamera;
+	public GameObject scalpel;
 	public GameObject empty;
 	public GameObject medcamera;
 	public GUITexture backbutton;
@@ -51,6 +52,8 @@ public class MenuButton : MonoBehaviour {
 			simpract.active = false;
 			simpract.enabled = true;
 			simtext.enabled = false;
+			scalpel.SetActive(false);
+			scalpel.transform.position = new Vector3(7.26665f, 8.83102f, -3.0001f);
 			menu.active = false;
 			menu.enabled = false;
 			steps.enabled = false;

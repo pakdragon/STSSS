@@ -1,40 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public enum Swipe{Left,Right,Up,Down};
-
 public class SwipeTest : MonoBehaviour {
         float screenDiagonalSize;
         float minSwipeDistancePixels;
         bool touchStarted;
         Vector2 touchStartPos;
         public float minSwipeDistance = .1f;
-        public static event System.Action<Swipe> OnSwipeDetected;
+        //public static event System.Action<Swipe> OnSwipeDetected;
 		float[,] correctVal = new float[,] { {90, .5f, .5f, .5f}, 
-											{90, .5f, .5f, .5f}, 
-											{90, .5f, .5f, .5f},
-											{90, .5f, .5f, .5f},
-											{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-	{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},
-		{90, .5f, .5f, .5f},{90, .5f, .5f, .5f},{90, .5f, .5f, .5f}
-	};
-		int maxTests = 25;
+											{45, .5f, .5f, .5f} };
+		int maxTests = 2;
 		private int testNumber;
 		public AnimationTest animTest;
 	
@@ -99,12 +75,25 @@ public class SwipeTest : MonoBehaviour {
 		        float distance = Vector2.Distance(lastPos, touchStartPos);
 				float correctAngle = correctVal[testNum,0];
 				bool correct = false;
-		        if (distance > minSwipeDistancePixels) {
-					float dy = lastPos.y - touchStartPos.y;
-					float dx = lastPos.x - touchStartPos.x;
+		        //if (distance > minSwipeDistancePixels) 
+				{
+					float dy = (lastPos.y - touchStartPos.y)*100/Screen.height;
+					float dx = (lastPos.x - touchStartPos.x)*100/Screen.width;
 		            float angle = Mathf.Rad2Deg * Mathf.Atan2(dx, dy);
+					if(angle < 0)
+					{
+						angle = angle + 360;
+					}
 					print("Angle is: " + angle);
-					
+			
+					if((angle <10) && (correctAngle>350))  //Check for fringe cases.
+					{
+						correctAngle = correctAngle - 360;
+					}
+					if((angle > 350) && (correctAngle < 10))
+					{
+						angle = angle - 360;
+					}
 					if( (angle < correctAngle +10) && (angle > correctAngle - 10) )
 					{
 						correct = true;
@@ -114,6 +103,7 @@ public class SwipeTest : MonoBehaviour {
 					{
 						correct = true;
 					}
+					
 				}  
 				return correct;
 			}
@@ -138,11 +128,16 @@ public class SwipeTest : MonoBehaviour {
 			bool TestSwipeDistance(Touch touch, int testNum){  //Tests the Swipe Distance to see if it correpsonds to the 
 				Vector2 lastPos = touch.position;
 				float distance = Vector2.Distance(lastPos, touchStartPos);
-				float angle = correctVal[testNum,0] * 2 * Mathf.PI / 360;
+				float angle = Mathf.PI * 2 - (correctVal[testNum,0] * 2 * Mathf.PI / 360);
 				angle = angle + Mathf.PI/2;
 				if(angle > Mathf.PI * 2)
 				{
 					angle -= Mathf.PI * 2;
+				}
+				float minDistance = Screen.width;
+				if( Screen.width > Screen.height)
+				{
+					minDistance = Screen.height;
 				}
 				float correctDistance = Mathf.Sqrt(   Mathf.Pow(correctVal[testNum,3] * Screen.width * Mathf.Cos(angle) ,2)+ 
 																Mathf.Pow(correctVal[testNum,3] * Screen.height * Mathf.Sin(angle),2 ) );
@@ -155,11 +150,10 @@ public class SwipeTest : MonoBehaviour {
 					print("Swipe Correct!");
 				}
 				return correct;
-		
 			}
 		
 			void callNewAnimation(){
-				animTest.booleanChange();
+				//animTest.booleanChange();
 				testNumber++;
 			}
 	

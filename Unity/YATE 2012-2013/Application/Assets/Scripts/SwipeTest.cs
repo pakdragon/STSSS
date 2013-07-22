@@ -13,6 +13,7 @@ public class SwipeTest : MonoBehaviour {
 											{110, .6f, .35f, .45f}, 
 											{110, .6f, .35f, .45f}, 
 											{110, .6f, .35f, .45f}, 
+<<<<<<< HEAD
 											{110, .6f, .35f, .45f},
 	{110, .6f, .35f, .45f},
 	{110, .6f, .35f, .45f},
@@ -21,6 +22,10 @@ public class SwipeTest : MonoBehaviour {
 	{110, .6f, .35f, .45f},
 	{110, .6f, .35f, .45f},};  
 		int maxTests = 11;
+=======
+											{110, .6f, .35f, .45f},  };  
+		int maxTests = 5;
+>>>>>>> 589c33e502c5118b823580239c972ef6fc774de2
 		private int testNumber;
 		public AnimationTest animTest;
 		public AnimationTest2 animTest2;
@@ -170,7 +175,10 @@ public class SwipeTest : MonoBehaviour {
 		
 			void callNewAnimation(){
 				animTest.booleanChange();
+<<<<<<< HEAD
 				animTest2.test2Change();
+=======
+>>>>>>> 589c33e502c5118b823580239c972ef6fc774de2
 				//testNumber++;
 			}
 	

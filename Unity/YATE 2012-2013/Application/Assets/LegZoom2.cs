@@ -18,7 +18,7 @@ public class LegZoom2 : MonoBehaviour {
 	public GUIText simtext;
 	public GUITexture menu;
 	public string[] myStrings; 
-	public int currIndex;
+	
 	public GUITexture steps;
 	public GameObject leganim;
 	public GameObject empty;
@@ -58,7 +58,7 @@ public class LegZoom2 : MonoBehaviour {
 		
 	if(((body.transform.position.x)-(player.transform.position.x)) <= 3.2f && ((body.transform.position.x)-(player.transform.position.x)) >= -5f && ((body.transform.position.z)-(player.transform.position.z)) <= 8f && ((body.transform.position.z)-(player.transform.position.z)) >= -2.8f) {
 		
-		medcamera.SetActive (true);
+		//medcamera.SetActive (true);
 		medcamera.camera.enabled = (true);
 		
 		simtest.active = true;
@@ -82,7 +82,7 @@ public class LegZoom2 : MonoBehaviour {
 			joystickMove.SetActive ( true);
 			joystickRotate.SetActive ( true);
 			medcamera.camera.enabled = (false);
-			medcamera.SetActive (false);
+			//medcamera.SetActive (false);
 			medcamera.transform.position = new Vector3(8.912951f, 9.702024f, -3.959019f);
 			legcamera.camera.enabled = false;
 			legcamera.SetActive(false);
@@ -110,6 +110,11 @@ public class LegZoom2 : MonoBehaviour {
 			menu.active = true;
 			menu.enabled = true;
 			control = 0;
+			leganim.GetComponent<AnimationTest2>().currIndex = 0;
+			leganim.GetComponent<AnimationTest2>().another = 0;
+			simtext.text = leganim.GetComponent<AnimationTest>().myStrings[leganim.GetComponent<AnimationTest>().currIndex];
+			leganim.GetComponent<AnimationTest>().swipeNumber = -1;
+			leganim.GetComponent<MenuButton>().step = 0;
 			leganim.GetComponent<SwipeTest>().enabled = true;
 		
 		}
@@ -122,20 +127,19 @@ public class LegZoom2 : MonoBehaviour {
 			simpract.active = false;
 			simpract.enabled = false;
 			simtext.enabled = false;
-			control = 3;
+			control = 2;
 			menu.active = true;
 			menu.enabled = true;
 			steps.enabled = true;
 			steps.active = true;
 			leganim.GetComponent<SwipeTest>().enabled = true;
 			leganim.GetComponent<AnimationTest>().swipeNumber = -1;
-			control = 0;
 			leganim.GetComponent<MenuButton>().step = 0;
 			steps.guiTexture.texture = leganim.GetComponent<AnimationTest>().pracstep[leganim.GetComponent<MenuButton>().step];
 		}
-		else{
-			control = -1;
-		}
+		//else{
+			//control = -1;
+		//}
 		
 		if (steps.enabled == true){
 			control = 1;

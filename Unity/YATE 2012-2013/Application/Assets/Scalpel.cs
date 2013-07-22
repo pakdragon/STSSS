@@ -29,7 +29,7 @@ public class Scalpel : MonoBehaviour {
 		Vector3 End = new Vector3(7.237984f,8.796801f, -2.5532f);
 		
 		
-		if (leganim.GetComponent<AnimationTest>().swipeNumber == 3 && leganim.GetComponent<MegaModifyObject>().enabled == true){
+	/*	if (leganim.GetComponent<AnimationTest>().swipeNumber == 3 && leganim.GetComponent<MegaModifyObject>().enabled == true){
 			
 			//scalpel.SetActive(true);
 			print ("I'm back again");
@@ -39,7 +39,7 @@ public class Scalpel : MonoBehaviour {
 				//scalpel.SetActive(false);
 				//scalpel.transform.position = StartPos;
 			}
-		}
+		}*/
 			
 			if(leganim.GetComponent<AnimationTest>().swipeNumber == 5){
 					print ("I am inside");
